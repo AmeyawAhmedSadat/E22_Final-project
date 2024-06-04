@@ -54,7 +54,7 @@ Due to this some further investigations were done. I then proceeded to make some
 
 ![target_variable](img3.jpeg)
 
-Based on the visualization above, I cleaned the data by dealing with the extreme outliers. After cleaning the house rent data from the extreme outliers, however the data was still right skewed  hence which is normal for house rent prices due the following factors:
+Based on the visualization above, I cleaned the data by dealing with the extreme outliers. After cleaning the house rent data from the extreme outliers, however the data was still right skewed which is normal for house rent prices due the following factors:
 - Market Dynamics: Rental prices are often influenced by market dynamics, including supply and demand. In areas where demand for rental properties exceeds supply, rental prices tend to increase, leading to right-skewness in the distribution of prices.
 - Location and Amenities: Properties located in desirable areas with convenient access to amenities such as schools, parks, public transportation, and shopping centers tend to command higher rents. As a result, rental prices for such properties can be right-skewed.
 - Property Features: Rental prices can vary based on the features and characteristics of the property, such as size, number of bedrooms, quality of construction, and amenities (e.g., swimming pool, gym). Properties with premium features generally have higher rents, leading to right-skewed distributions.
@@ -203,16 +203,19 @@ This part involves building and evaluating several machine learning models for a
 ## Conclusion
 Based on the evaluation metrics, the stacking regressor performed the best among the models tested. Stacking combines the predictions of multiple models to improve overall performance. This final model can be deployed for prediction tasks.
 
-
+# 3. MODEL DEPLOYMENT USING FLASK AND DOCKERFILE
 
 ## How to Install and Run the App with a Virtual Environment and how to open the port
 
+At this part I will give instructions on how you can used the final model which was saved with joblib to deploy the model into production using flask and dockerfile and also postman.
+
 ### Prerequisites
 
-- Ensure you have Python installed on your system.
+- Ensure you have visual studio installed on your system and install all neccessary extensions like python, remote ssh, github, flask etc.
 - You'll need an SSH key to connect to your virtual machine.
 
 ### Steps to Set Up and Run the App
+First of all create a folder where you would like to store all the neccessary files we have created. After that you can git pull this repository then continue with the following steps using the terminal in visual studio or connect to any terminal like git bash or use the cmd terminal or any other. However I will describe all the steps I took in general.
 
 1. **Connect to Your Virtual Machine:**
 
@@ -299,7 +302,7 @@ http://your_vm_ip_address:7774/predict_price?open_plan=1&rooms=4&area=80&living_
 
 
 # Information about Dockerfile and it’s content
-As of the time my docker file was created, docker nhad not been blocked in Russia and also I had a vpn hence I did not use the work around path in using docker. 
+As of the time my docker file was created, docker nhad not been blocked in Russia and also I had a vpn hence I did not use the work around path in using docker. before you install the dockerfile its a good idea to deactivate the virtual environment.
 
 1. I installed docker with the following command from the docker [website](https://docs.docker.com/engine/install/ubuntu/).
 
@@ -380,7 +383,7 @@ docker run --network host -d ahmedcm/gsom_e2e_24:v.0.1
 
 # How to run app using docker and which port it uses
 
-Use postman port 7774 just like I used above
+Use postman port 7774 just like I used above for the flask app.
 ```bash
 http://your_vm_ip_address:7774/predict_price?open_plan=1&rooms=4&area=80&living_area=80&agent_fee=100&renovation=5
 ```
